@@ -20,16 +20,15 @@ namespace Question6
         }
         public static Node<int> Check(BinNode<int>? t1, BinNode<int> t2,Node<int> lst)
         {
-            if (t1 != null)
-            {
-                int x = t1.GetValue();
-                if (!Exist(t2, x))
-                {
-                    lst.SetNext(new Node<int> (x,lst.GetNext()));
-                }
-                lst = Check(t1.GetLeft(), t2, lst);
-                lst = Check(t1.GetRight(),t2, lst);
-            }
+            if (t1 == null)
+                return lst;
+
+            int x = t1.GetValue();
+            if (!Exist(t2, x))
+                lst.SetNext(new Node<int>(x, lst.GetNext()));
+
+            lst = Check(t1.GetLeft(), t2, lst);
+            lst = Check(t1.GetRight(), t2, lst);
             return lst;
         }
         public static void Main()
